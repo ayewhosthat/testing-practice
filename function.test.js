@@ -1,26 +1,43 @@
-import { capitalize } from "./function.js";
+import { capitalize, reverseString } from "./function.js";
 
-// empty string
+// CAPITALIZE
 test('empty string', () => {
     expect(capitalize('')).toBe('')
 })
 
-// already capitalized
 test('already capitalized', () => {
     expect(capitalize('ABBA')).toBe('ABBA')
 })
 
-// all lowercase
 test('all lowercase', () => {
     expect(capitalize('asdf')).toBe('ASDF')
 })
 
-// healthy mix
 test('healthy mix', () => {
     expect(capitalize('aOPe')).toBe('AOPE')
 })
 
-// includes digits
 test('includes digits', () => {
     expect(capitalize('99ix')).toBe('99IX')
+})
+
+// REVERSE STRING
+test('empty string', () => {
+    expect(reverseString('')).toBe('')
+})
+
+test('palindrome', () => {
+    expect(reverseString('abba')).toBe('abba')
+})
+
+test('general case', () => {
+    expect(reverseString('Akb90e')).toBe('e09bkA')
+})
+
+test('same character', () => {
+    expect(reverseString('mmmm')).toBe('mmmm')
+})
+
+test('length 1', () => {
+    expect(reverseString('k')).toBe('k')
 })
