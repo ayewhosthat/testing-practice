@@ -1,4 +1,4 @@
-import { capitalize, reverseString } from "./function.js";
+import { analyzeArray, capitalize, reverseString } from "./function.js";
 
 // CAPITALIZE
 test('empty string', () => {
@@ -40,4 +40,41 @@ test('same character', () => {
 
 test('length 1', () => {
     expect(reverseString('k')).toBe('k')
+})
+
+// ANALYZE ARRAY
+test('empty array', () => {
+    expect(analyzeArray([])).toEqual({
+        average: 0,
+        max: 0,
+        min: 0,
+        length: 0
+    })
+})
+
+test('length 1 array', () => {
+    expect(analyzeArray([2])).toEqual({
+        average: 2,
+        max: 2,
+        min: 2,
+        length: 1
+    })
+})
+
+test('all same number', () => {
+    expect(analyzeArray([8,8,8,8,8])).toEqual({
+        average: 8,
+        max: 8,
+        min: 8,
+        length: 5
+    })
+})
+
+test('includes negatives', () => {
+    expect(analyzeArray([-1, 3, 3, -10, 0])).toEqual({
+        average: -1,
+        max: 3,
+        min: -10,
+        length: 5
+    })
 })
