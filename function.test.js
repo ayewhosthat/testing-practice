@@ -1,4 +1,4 @@
-import { analyzeArray, capitalize, reverseString } from "./function.js";
+import { analyzeArray, capitalize, reverseString, Calculator, caesarCipher } from "./function.js";
 
 // CAPITALIZE
 test('empty string', () => {
@@ -77,4 +77,61 @@ test('includes negatives', () => {
         min: -10,
         length: 5
     })
+})
+
+const calc = new Calculator();
+test('divide by 0', () => {
+    expect(calc.divide(1,0)).toEqual('invalid')
+})
+
+test('regular divide', () => {
+    expect(calc.divide(2, 4)).toBeCloseTo(0.5)
+})
+
+test('floating point division', () => {
+    expect(calc.divide(0.4, 0.5)).toBeCloseTo(0.8)
+})
+
+test('normal addition', () => {
+    expect(calc.add(10, -2)).toBe(8)
+})
+
+test('floating point addition', () => {
+    expect(calc.add(0.1, 0.2)).toBeCloseTo(0.3)
+})
+
+test('normal subtraction', () => {
+    expect(calc.subtract(4, 7)).toBe(-3)
+})
+
+test('floating point subtraction', () => {
+    expect(calc.subtract(0.3, 1.6)).toBeCloseTo(-1.3)
+})
+
+test('normal multiplication', () => {
+    expect(calc.multiply(6, 6)).toBe(36)
+})
+
+test('floating point multiplication', () => {
+    expect(calc.multiply(0.1, 0.4)).toBeCloseTo(0.04);
+})
+
+test('empty string caesar shift', () => {
+    expect(caesarCipher('', 5)).toBe('')
+})
+
+test('single character', () => {
+    expect(caesarCipher('K', 1)).toBe('L')
+})
+
+test('only digits (stays the same)', () => {
+    expect(caesarCipher('2388', 9)).toBe('2388')
+})
+
+test('shift of 0', () => {
+    expect(caesarCipher('lol', 0)).toBe('lol')
+})
+
+test('general case', () => {
+    expect(caesarCipher('Hello, World!', 3)).toBe('Khoor, Zruog!')
 })
